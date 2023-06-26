@@ -1,0 +1,19 @@
+{
+  "name": "api_node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "marcoswlrich",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node src/index.ts"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.3"
+  },
+  "dependencies": {
+    "@types/node": "^20.3.1",
+    "express": "^4.18.2",
+    "prisma": "^4.16.1",
+    "ts-node": "^10.9.1"
+  }
+}
