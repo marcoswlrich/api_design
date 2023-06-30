@@ -16,4 +16,23 @@ export const protect = (req, res, next) => {
     res.send("Not authorized");
     return;
   }
+
+  const [, token] = bearer.split(" ");
+
+  if (!token) {
+    res.status(401);
+    res.send("Not authorized");
+    return;
+  }
+
+  try {
+    const user = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = user;
+    next();
+  } catch (err) {
+    console.error(err);
+    res.status(401);
+    res.json({ message: "not valid token" });
+    return;
+  }
 };
