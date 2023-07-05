@@ -16,15 +16,18 @@ model User {
   username  String    @unique
   password  String
   updates   Update[]
+  Product   Product[]
 }
 
 model Product {
   id          String   @id @default(uuid())
   createdAt   DateTime @default(now())
-  name        String   @db.VarChar(255) 
-  belongsTo   User     @relation(fields: [belongsToID], references: [id])
-  belongsToID String
+  name        String   @db.VarChar(255)
+  belongsTo   User     @relation(fields: [belongsToId], references: [id])
+  belongsToId String
   Update      Update[]
+
+  @@unique([id, belongsToId])
 }
 
 enum UPDATE_STATUS {
